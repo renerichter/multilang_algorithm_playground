@@ -1,0 +1,125 @@
+# Common ignores for all languages
+.DS_Store
+Thumbs.db
+*.log
+*.out
+*.tmp
+*.swp
+*.swo
+*.bak
+
+# --------------------------
+# C++ specific ignores
+# --------------------------
+# Object files
+*.o
+*.obj
+*.lo
+*.d
+
+# Executable files
+*.exe
+*.out
+*.app
+
+# Libraries
+*.lib
+*.a
+*.so
+*.dll
+*.dylib
+
+# Build directories
+Cpp/build/
+Cpp/cmake-build-debug/
+Cpp/CMakeCache.txt
+Cpp/CMakeFiles/
+Cpp/Makefile
+*.make
+*.mk
+
+# --------------------------
+# Python specific ignores
+# --------------------------
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+Python/.venv/
+Python/env/
+Python/venv/
+Python/ENV/
+Python/env.bak/
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# Test coverage results
+.coverage
+*.cover
+*.py,cover
+
+# MyPy cache
+Python/.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# PyInstaller
+Python/dist/
+Python/build/
+*.spec
+
+# --------------------------
+# Golang specific ignores
+# --------------------------
+# Binaries
+*.exe
+*.out
+*.so
+*.a
+*.dll
+
+# Go build files
+GoLang/go.sum
+GoLang/go.mod
+GoLangbin/
+GoLangvendor/
+
+# Test data
+*.test
+
+# IDE directories for Go
+TypeScript/.idea/
+TypeScript/.vscode/
+
+# --------------------------
+# TypeScript specific ignores
+# --------------------------
+# Node modules
+TypeScript/node_modules/
+
+# Dist directory
+TypeScript/dist/
+TypeScript/build/
+
+# TypeScript compiled files
+*.tsbuildinfo
+*.js
+*.d.ts
+*.js.map
+*.d.ts.map
+
+# IDE and other directories
+TypeScript/.idea/
+TypeScript/.vscode/
+
+# Yarn/ npm lock files
+yarn.lock
+package-lock.json
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
