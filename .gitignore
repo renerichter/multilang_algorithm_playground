@@ -1,3 +1,6 @@
+# mine
+.vscode
+
 # Common ignores for all languages
 .DS_Store
 Thumbs.db
