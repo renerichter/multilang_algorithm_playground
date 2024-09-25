@@ -2,7 +2,7 @@
 #include <iostream>
 #include <algorithm>
 
-using std::cout, std::vector;
+using std::cout, std::vector, std::unique_ptr, std::make_unique, std::invalid_argument, std::string, std::copy, std::ostream_iterator,std::endl;
 
 template <typename T>
 class Sorter
@@ -67,16 +67,16 @@ public:
     // we need to tell Compiler which datatype is behind pointer for memory management and safety
     // unique_ptr makes sure that RAII-principles are used
     // could be also named 'Scope-bound', which means that the lifetime of the object is bound to the scope of a variable, so when the variable goes out of scope then the destructor will release the resource. A very useful property of this is that it makes for greater exception-safety.
-    std::unique_ptr<Sorter<T>> createSorter(const std::string& sorterType)
+    unique_ptr<Sorter<T>> createSorter(const string& sorterType)
     {
         if (sorterType == "merge")
         {
             // Allocate a MergeSort<T> object on the heap, wrap it in a unique_ptr, and return the pointer.
-            return std::make_unique<MergeSort<T>>();
+            return make_unique<MergeSort<T>>();
         }
         else
         {
-            throw std::invalid_argument("Sorter type '" + sorterType + "' not found.");
+            throw invalid_argument("Sorter type '" + sorterType + "' not found.");
         }
     }
 };
@@ -98,17 +98,17 @@ int main()
     /*     vector<int> hi = {1, 2, 3, 4, 5};
         size_t middle = hi.size() / 2;
         cout << "First half: ~>";
-        std::copy(hi.begin(), hi.begin() + middle, std::ostream_iterator<int>(cout, "-"));
+        copy(hi.begin(), hi.begin() + middle, ostream_iterator<int>(cout, "-"));
         cout << "\nSecond half: ";
-        std::copy(hi.begin()+middle,hi.end(),std::ostream_iterator<int>(cout, "-"));
+        copy(hi.begin()+middle,hi.end(),ostream_iterator<int>(cout, "-"));
         cout<<"\b<~\n";
         vector<int> leftPart(hi.begin(), hi.begin() + 3);
-        copy(leftPart.begin(), leftPart.end(), std::ostream_iterator<int>(cout, "-")); */
+        copy(leftPart.begin(), leftPart.end(), ostream_iterator<int>(cout, "-")); */
 
     vector<int> aList = genRandomIntList(15, -10, 20);
     cout << "Unsorted List: ";
-    copy(aList.begin(), aList.end(), std::ostream_iterator<int>(cout, " "));
-    cout << std::endl;
+    copy(aList.begin(), aList.end(), ostream_iterator<int>(cout, " "));
+    cout << endl;
 
     SorterFactory<int> sorterFactory;
     auto sorter = sorterFactory.createSorter("merge");
@@ -116,6 +116,6 @@ int main()
     //'->' dereferences the pointer such that the object (here function 'sort') can be used
     vector<int> sortedAList = sorter->sort(aList);
     cout << "Sorted List: ";
-    copy(sortedAList.begin(), sortedAList.end(), std::ostream_iterator<int>(cout, " "));
+    copy(sortedAList.begin(), sortedAList.end(), ostream_iterator<int>(cout, " "));
     return 0;
 }
